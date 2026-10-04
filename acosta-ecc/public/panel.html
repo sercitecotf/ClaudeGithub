@@ -55,7 +55,7 @@
 <main>
   <section>
     <div class="card">
-      <h2>Solicitudes de la web pendientes</h2>
+      <h2>Solicitudes de la web</h2>
       <div id="pending" class="presets"><span class="muted">Ninguna por ahora.</span></div>
     </div>
     <div class="card">
@@ -82,6 +82,11 @@
       <h2>Estado del caso</h2>
       <div><span class="state" id="state"></span> · <span id="caseId" class="muted"></span> · <span class="muted" id="iters"></span></div>
       <div class="sig" id="sigs" style="margin-top:8px"></div>
+    </div>
+    <div class="card owner" id="reqCard" hidden>
+      <h2>Solicitud de la web · datos reales del cliente</h2>
+      <div id="reqBody" style="line-height:1.8"></div>
+      <div class="row"><button id="markDone">Marcar como atendida</button></div>
     </div>
     <div class="card owner" id="ownerCard" hidden>
       <h2>Aprobación de José Ángel (humano en el bucle)</h2>
@@ -143,18 +148,37 @@ async function post(url, body) {
   const j = await res.json(); if (!res.ok) throw new Error(j.error); return j;
 }
 $('send').onclick = async () => render(await post('/api/case', { message: $('msg').value, channel: $('channel').value, time: $('time').value, festivo: $('festivo').checked }));
-$('approve').onclick = async () => render(await post(`/api/case/${current.id}/approve`, { approved: true, etaMin: $('eta').value }));
-$('reject').onclick = async () => render(await post(`/api/case/${current.id}/approve`, { approved: false }));
+$('approve').onclick = async () => { render(await post(`/api/case/${current.id}/approve`, { approved: true, etaMin: $('eta').value })); refreshPending(); };
+$('reject').onclick = async () => { render(await post(`/api/case/${current.id}/approve`, { approved: false })); refreshPending(); };
 
+let currentReq = null;
+const ESTADO = { pendiente: '🔴 Pendiente', respondida: '⚪ Respondida', atendida: '🟢 Atendida' };
 async function refreshPending() {
   try {
-    const list = await (await fetch('/api/pending')).json();
+    const list = await (await fetch('/api/solicitudes')).json();
     const box = $('pending');
     if (!list.length) { box.innerHTML = '<span class="muted">Ninguna por ahora.</span>'; return; }
     box.innerHTML = '';
-    list.forEach((p) => { const b = document.createElement('button'); b.textContent = `${p.id} · ${p.channel}`; b.onclick = async () => render(await (await fetch(`/api/case/${p.id}`)).json()); box.append(b); });
+    list.forEach((p) => {
+      const b = document.createElement('button');
+      b.textContent = `${ESTADO[p.estado] || p.estado}${p.urgente ? ' · URGENTE' : ''} · ${p.tipo} · ${p.municipio} · ${new Date(p.creada).toLocaleString('es-ES')}`;
+      b.onclick = () => openReq(p.id);
+      box.append(b);
+    });
   } catch (e) { /* sin servidor */ }
 }
+async function openReq(id) {
+  const r = await (await fetch(`/api/solicitud/${id}`)).json();
+  currentReq = r.id;
+  const body = $('reqBody'); body.replaceChildren();
+  const line = (k, v) => { const d = document.createElement('div'); const b = document.createElement('b'); b.textContent = `${k}: `; d.append(b); d.append(v); body.append(d); };
+  const tel = Object.assign(document.createElement('a'), { href: `tel:${r.telefono}`, textContent: r.telefono });
+  line('Nombre', r.nombre); line('Teléfono', tel); line('Municipio', r.municipio); line('Tipo', r.tipo); line('Mensaje', r.mensaje || '—'); line('Recibida', new Date(r.creada).toLocaleString('es-ES')); line('Estado', ESTADO[r.estado] || r.estado);
+  $('reqCard').hidden = false;
+  if (r.caso) render(r.caso); else $('ownerCard').hidden = true;
+  $('reqCard').hidden = false;
+}
+$('markDone').onclick = async () => { if (!currentReq) return; await fetch(`/api/solicitud/${currentReq}/atendida`, { method: 'POST' }); await openReq(currentReq); refreshPending(); };
 refreshPending(); setInterval(refreshPending, 4000);
 </script>
 </body>

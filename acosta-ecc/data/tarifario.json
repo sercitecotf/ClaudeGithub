@@ -1,29 +1,143 @@
 {
-  "_aviso": "VALORES DE EJEMPLO para la demo. Sustituir por los precios reales validados por José Ángel Acosta Carballo.",
+  "_aviso": "VALORES DE EJEMPLO. Sustituye por los precios reales y pon validado_por_propietario en true. Sin eso la web NO arranca en modo producción.",
+  "validado_por_propietario": false,
   "igic": 0.07,
   "tarifas": {
-    "CER-APE-01": { "concepto": "Apertura de puerta sin daños (cilindro estándar)", "importe": 60 },
-    "CER-BOM-01": { "concepto": "Cambio de bombín estándar (mano de obra, sin material)", "importe": 35 },
-    "REC-NOC-01": { "concepto": "Recargo nocturno (22:00-07:00)", "importe": 40 },
-    "REC-FES-01": { "concepto": "Recargo festivo / domingo", "importe": 30 },
-    "SOL-REJ-M2": { "concepto": "Reja a medida en hierro", "importe": 120, "unidad": "m²", "tipo": "desde" },
-    "SOL-PUE-M2": { "concepto": "Puerta o portón metálico a medida", "importe": 150, "unidad": "m²", "tipo": "desde" },
-    "SOL-HORA-01": { "concepto": "Soldadura / reparación (hora)", "importe": 35, "unidad": "hora", "tipo": "desde" }
+    "CER-APE-01": {
+      "concepto": "Apertura de puerta sin daños (cilindro estándar)",
+      "importe": 60
+    },
+    "CER-BOM-01": {
+      "concepto": "Cambio de bombín estándar (mano de obra, sin material)",
+      "importe": 35
+    },
+    "REC-NOC-01": {
+      "concepto": "Recargo nocturno (22:00-07:00)",
+      "importe": 40
+    },
+    "REC-FES-01": {
+      "concepto": "Recargo festivo / domingo",
+      "importe": 30
+    },
+    "SOL-REJ-M2": {
+      "concepto": "Reja a medida en hierro",
+      "importe": 120,
+      "unidad": "m²",
+      "tipo": "desde"
+    },
+    "SOL-PUE-M2": {
+      "concepto": "Puerta o portón metálico a medida",
+      "importe": 150,
+      "unidad": "m²",
+      "tipo": "desde"
+    },
+    "SOL-HORA-01": {
+      "concepto": "Soldadura / reparación (hora)",
+      "importe": 35,
+      "unidad": "hora",
+      "tipo": "desde"
+    }
   },
   "desplazamiento": {
-    "Los Llanos de Aridane": { "id": "DES-LLA-01", "importe": 10, "alias": ["los llanos", "llanos de aridane"] },
-    "El Paso": { "id": "DES-PAS-01", "importe": 15, "alias": ["el paso"] },
-    "Tazacorte": { "id": "DES-TAZ-01", "importe": 15, "alias": ["tazacorte"] },
-    "Santa Cruz de La Palma": { "id": "DES-SCP-01", "importe": 25, "alias": ["santa cruz"] },
-    "Breña Alta": { "id": "DES-BRA-01", "importe": 25, "alias": ["brena alta"] },
-    "Breña Baja": { "id": "DES-BRB-01", "importe": 25, "alias": ["brena baja"] },
-    "Villa de Mazo": { "id": "DES-MAZ-01", "importe": 30, "alias": ["mazo"] },
-    "Fuencaliente": { "id": "DES-FUE-01", "importe": 35, "alias": ["fuencaliente"] },
-    "Puntallana": { "id": "DES-PUL-01", "importe": 35, "alias": ["puntallana"] },
-    "Puntagorda": { "id": "DES-PUG-01", "importe": 30, "alias": ["puntagorda"] },
-    "Tijarafe": { "id": "DES-TIJ-01", "importe": 30, "alias": ["tijarafe"] },
-    "San Andrés y Sauces": { "id": "DES-SAS-01", "importe": 40, "alias": ["san andres y sauces", "san andres"] },
-    "Garafía": { "id": "DES-GAR-01", "importe": 45, "alias": ["garafia"] },
-    "Barlovento": { "id": "DES-BAR-01", "importe": 45, "alias": ["barlovento"] }
+    "Los Llanos de Aridane": {
+      "id": "DES-LLA-01",
+      "importe": 10,
+      "alias": [
+        "los llanos",
+        "llanos de aridane"
+      ]
+    },
+    "El Paso": {
+      "id": "DES-PAS-01",
+      "importe": 15,
+      "alias": [
+        "el paso"
+      ]
+    },
+    "Tazacorte": {
+      "id": "DES-TAZ-01",
+      "importe": 15,
+      "alias": [
+        "tazacorte"
+      ]
+    },
+    "Santa Cruz de La Palma": {
+      "id": "DES-SCP-01",
+      "importe": 25,
+      "alias": [
+        "santa cruz"
+      ]
+    },
+    "Breña Alta": {
+      "id": "DES-BRA-01",
+      "importe": 25,
+      "alias": [
+        "brena alta"
+      ]
+    },
+    "Breña Baja": {
+      "id": "DES-BRB-01",
+      "importe": 25,
+      "alias": [
+        "brena baja"
+      ]
+    },
+    "Villa de Mazo": {
+      "id": "DES-MAZ-01",
+      "importe": 30,
+      "alias": [
+        "mazo"
+      ]
+    },
+    "Fuencaliente": {
+      "id": "DES-FUE-01",
+      "importe": 35,
+      "alias": [
+        "fuencaliente"
+      ]
+    },
+    "Puntallana": {
+      "id": "DES-PUL-01",
+      "importe": 35,
+      "alias": [
+        "puntallana"
+      ]
+    },
+    "Puntagorda": {
+      "id": "DES-PUG-01",
+      "importe": 30,
+      "alias": [
+        "puntagorda"
+      ]
+    },
+    "Tijarafe": {
+      "id": "DES-TIJ-01",
+      "importe": 30,
+      "alias": [
+        "tijarafe"
+      ]
+    },
+    "San Andrés y Sauces": {
+      "id": "DES-SAS-01",
+      "importe": 40,
+      "alias": [
+        "san andres y sauces",
+        "san andres"
+      ]
+    },
+    "Garafía": {
+      "id": "DES-GAR-01",
+      "importe": 45,
+      "alias": [
+        "garafia"
+      ]
+    },
+    "Barlovento": {
+      "id": "DES-BAR-01",
+      "importe": 45,
+      "alias": [
+        "barlovento"
+      ]
+    }
   }
 }

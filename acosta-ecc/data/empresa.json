@@ -1,0 +1,14 @@
+{
+  "_aviso": "Rellena los campos en null con los datos REALES. Sin ellos la web NO arranca en modo producción.",
+  "nombre_comercial": "Soldadura Acosta La Palma",
+  "titular": "José Ángel Acosta Carballo",
+  "telefono": "669 76 86 59",
+  "dominio_principal": "soldaduraacosta.es",
+  "dominios": ["soldaduraacosta.es", "soldaduraacostabel.com"],
+  "nif": null,
+  "domicilio": null,
+  "email": null,
+  "proveedor_alojamiento": null,
+  "retencion_meses": 12,
+  "retencion_confirmada": false
+}

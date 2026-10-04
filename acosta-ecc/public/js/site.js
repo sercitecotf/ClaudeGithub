@@ -20,6 +20,15 @@
     els.forEach((el) => io.observe(el));
   } else els.forEach((el) => el.classList.add('in'));
 
+  // galería: solo aparece si hay fotos reales en public/img/trabajos/
+  fetch('/api/galeria').then((r) => r.json()).then((fotos) => {
+    if (!Array.isArray(fotos) || !fotos.length) return;
+    const g = document.getElementById('gallery');
+    fotos.forEach((f) => { const fig = document.createElement('figure'); const img = Object.assign(document.createElement('img'), { src: f.src, alt: f.alt, loading: 'lazy' }); fig.append(img); g.append(fig); });
+    document.getElementById('trabajos').hidden = false;
+    document.getElementById('navTrabajos').hidden = false;
+  }).catch(() => {});
+
   // formulario
   const form = document.getElementById('quote');
   const msg = document.getElementById('formMsg');

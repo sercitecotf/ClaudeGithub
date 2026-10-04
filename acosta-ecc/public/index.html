@@ -68,6 +68,7 @@
     <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><svg class="i" viewBox="0 0 24 24"><use href="#i-menu"/></svg></button>
     <nav class="main" id="nav" aria-label="Principal">
       <a href="#servicios">Servicios</a>
+      <a href="#trabajos" id="navTrabajos" hidden>Trabajos</a>
       <a href="#urgencias">Urgencias</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#zonas">Zonas</a>
@@ -139,6 +140,17 @@
           <p>Cerradura rota, puerta que no cierra, reja forzada o portón atascado: vamos a dejarlo seguro.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA (solo aparece si hay fotos en public/img/trabajos/) -->
+  <section id="trabajos" hidden>
+    <div class="wrap">
+      <div class="sec-head reveal in">
+        <span class="eyebrow">Trabajos realizados</span>
+        <h2>Así trabajamos</h2>
+      </div>
+      <div class="gallery" id="gallery"></div>
     </div>
   </section>
 

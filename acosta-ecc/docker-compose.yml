@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - datos:/datos                       # solicitudes cifradas (haz copia de seguridad de este volumen)
+      - ./public/img/trabajos:/app/public/img/trabajos   # fotos de la galería
+    expose:
+      - "3000"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data                    # certificados HTTPS
+    depends_on:
+      - app
+volumes:
+  datos:
+  caddy_data:

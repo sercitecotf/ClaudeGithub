@@ -15,7 +15,8 @@ cd acosta-ecc
 npm start          # web pública: http://localhost:3000   ·   panel interno: http://localhost:3000/panel
                    # (otro puerto: PORT=3100 npm start)
 npm run demo       # mismo caso de medianoche, por terminal y con colores
-npm test           # tests de guardrails y del formulario
+npm test           # 26 tests: agentes, formulario, cifrado, avisos, acceso al panel, bloqueo de producción
+npm run check      # qué falta antes de publicar
 ```
 
 En la web, elige un escenario, pulsa **Enviar al sistema** y, cuando el caso quede en
@@ -30,8 +31,12 @@ En la web, elige un escenario, pulsa **Enviar al sistema** y, cuando el caso que
   formulario de la web aparecen en «Solicitudes de la web pendientes» para que José Ángel las apruebe.
 - El formulario público pasa por los 4 agentes, pero **solo devuelve al visitante un mensaje seguro**:
   nunca la traza, los borradores ni los precios internos.
-- Pendientes antes de publicar: completar `privacidad.html` y `aviso-legal.html` (campos «COMPLETAR»),
-  logo y fotos reales, y avisar a José Ángel de cada solicitud (correo/WhatsApp); hoy se guardan solo en memoria.
+- **Solicitudes**: se guardan **cifradas** (AES-256-GCM) y sobreviven a reinicios; se avisa a José Ángel por ntfy o Telegram
+  **sin datos personales**; el panel muestra los datos reales para que pueda llamar. Se borran solas al cumplirse el plazo de conservación.
+- **Galería**: aparece sola cuando se copian fotos a `public/img/trabajos/`.
+- **Antes de publicar**: `npm run check` lista lo que falta. En modo producción (`NODE_ENV=production`) el servidor
+  **no arranca** si faltan datos legales, si los precios son de ejemplo o si faltan las claves.
+- **Cómo publicar**: ver [`DESPLIEGUE.md`](DESPLIEGUE.md) (Docker + HTTPS automático con Caddy).
 
 ## Escenarios incluidos
 
@@ -50,7 +55,13 @@ En la web, elige un escenario, pulsa **Enviar al sistema** y, cuando el caso que
 
 ```
 public/index.html    Web pública (css/, js/, img/ con logo y marca)
-public/panel.html    Consola interna de los agentes
+public/panel.html    Panel interno (agentes + bandeja de solicitudes)
+src/store.js         Almacén cifrado de solicitudes
+src/notify.js        Avisos (ntfy/Telegram) sin datos personales
+src/legal.js         Aviso legal y privacidad generados desde data/empresa.json
+src/config.js        Comprobaciones previas a publicar
+data/empresa.json    Datos legales de la empresa (rellenar)
+Dockerfile, docker-compose.yml, Caddyfile   Despliegue con HTTPS automático
 src/contact.js       Formulario público: validación, límite por IP, respuesta segura
 src/security.js      A3  Vault de tokens, pre-chequeo de entrada, revisión de salida
 src/creator.js       A1  Borradores (simulado con plantillas; en producción, un LLM)

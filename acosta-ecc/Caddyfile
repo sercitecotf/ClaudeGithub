@@ -1,0 +1,10 @@
+# HTTPS automático (Let's Encrypt). Requiere que los DNS de los dominios apunten a este servidor.
+soldaduraacosta.es {
+	encode gzip
+	header Strict-Transport-Security "max-age=31536000"
+	reverse_proxy app:3000
+}
+
+www.soldaduraacosta.es, soldaduraacostabel.com, www.soldaduraacostabel.com {
+	redir https://soldaduraacosta.es{uri} permanent
+}

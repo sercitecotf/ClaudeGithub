@@ -6,7 +6,12 @@
   "scripts": {
     "start": "node server.js",
     "demo": "node src/cli.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check.js",
+    "generar-clave": "node scripts/generar-clave.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
