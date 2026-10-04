@@ -1,0 +1,32 @@
+{
+  "apertura": {
+    "nombre": "Apertura de puerta",
+    "tarifa": "CER-APE-01",
+    "verificar_titularidad": true,
+    "requiere_visita": false
+  },
+  "bombin": {
+    "nombre": "Cambio de bombín",
+    "tarifa": "CER-BOM-01",
+    "verificar_titularidad": true,
+    "requiere_visita": false
+  },
+  "reja": {
+    "nombre": "Reja a medida",
+    "tarifa": "SOL-REJ-M2",
+    "requiere_visita": true,
+    "ambiente_salino": true
+  },
+  "puerta_metalica": {
+    "nombre": "Puerta o portón metálico",
+    "tarifa": "SOL-PUE-M2",
+    "requiere_visita": true,
+    "ambiente_salino": true
+  },
+  "soldadura": {
+    "nombre": "Soldadura / reparación",
+    "tarifa": "SOL-HORA-01",
+    "requiere_visita": true,
+    "ambiente_salino": false
+  }
+}

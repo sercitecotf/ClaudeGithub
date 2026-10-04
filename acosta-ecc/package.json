@@ -1,0 +1,12 @@
+{
+  "name": "acosta-ecc-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo local del ecosistema multi-agente ECC de Soldadura Acosta La Palma (agentes simulados, sin claves de API)",
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node src/cli.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=18" }
+}
