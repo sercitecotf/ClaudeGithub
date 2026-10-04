@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Soldadura Acosta">
+  <rect width="64" height="64" rx="14" fill="#161b21"/>
+  <path d="M17 49 32 15 47 49" fill="none" stroke="#e8ecef" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 37h17" stroke="#ff6a1a" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#ffb703" stroke-width="3" stroke-linecap="round">
+    <path d="M44 11l5-5M49 19l7-3M38 7l2-5"/>
+  </g>
+</svg>

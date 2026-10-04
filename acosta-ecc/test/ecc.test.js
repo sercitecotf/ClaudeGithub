@@ -94,3 +94,41 @@ test('la puerta de envío bloquea si las firmas no coinciden con el texto', () =
   assert.equal(outbound('Hola {{TEL_099}}', v).verdict, 'BLOQUEADO');
   assert.equal(inbound('hola', new Vault()).verdict, 'SEGURO');
 });
+
+// ---------- formulario público ----------
+const contact = require('../src/contact');
+const base = { nombre: 'Juan Ramón', telefono: '669 76 86 59', municipio: 'Los Llanos de Aridane', tipo: 'apertura', mensaje: 'Estoy en calle Cruz Roja 14', privacidad: true };
+
+test('formulario público: solo devuelve un mensaje seguro, sin traza ni precios internos', () => {
+  const r = contact.submit(base, new Date('2026-10-04T23:30:00Z')); // domingo, madrugada
+  assert.equal(r.status, 200);
+  assert.deepEqual(Object.keys(r.body).sort(), ['message', 'received']);
+  assert.match(r.body.message, /Hemos recibido tu solicitud/);
+  assert.doesNotMatch(r.body.message, /€|{{|ECC|A[1-4]\b/);
+});
+
+test('formulario público: exige consentimiento, teléfono y municipio válidos', () => {
+  assert.equal(contact.submit({ ...base, privacidad: false }).status, 400);
+  assert.equal(contact.submit({ ...base, telefono: 'abc' }).status, 400);
+  assert.equal(contact.submit({ ...base, municipio: 'Madrid' }).status, 400);
+  assert.equal(contact.submit({ ...base, tipo: 'otra' }).status, 400);
+});
+
+test('formulario público: honeypot y XSS no llegan a los agentes', () => {
+  assert.equal(contact.submit({ ...base, website: 'http://spam.example' }).status, 200);
+  const x = contact.submit({ ...base, mensaje: '<script>alert(1)</script>' });
+  assert.equal(x.status, 200);
+  assert.doesNotMatch(JSON.stringify(x.body), /script/);
+});
+
+test('formulario público: el nombre completo se tokeniza antes de llegar a los agentes', () => {
+  const { handle: h } = require('../src/orchestrator');
+  const r = h({ message: 'Soy Juan Ramón. Necesito una reja a medida en Los Llanos de Aridane.', channel: 'web', clock: day });
+  assert.ok(!JSON.stringify(r.trace).includes('Ramón'));
+});
+
+test('formulario público: límite de peticiones por IP', () => {
+  const ip = 'test-ip';
+  const res = Array.from({ length: 7 }, () => contact.rateLimited(ip));
+  assert.deepEqual(res, [false, false, false, false, false, true, true]);
+});

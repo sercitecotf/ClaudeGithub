@@ -153,4 +153,7 @@ function view(c) {
   };
 }
 
-module.exports = { handle, approve };
+const get = (id) => (cases.has(id) ? view(cases.get(id)) : null);
+const pending = () => [...cases.values()].filter((c) => c.state === 'ESPERANDO_PROPIETARIO').map((c) => ({ id: c.id, channel: c.channel, preview: c.draft?.text.slice(0, 160) ?? '', elapsed_ms: Date.now() - c.t0 }));
+
+module.exports = { handle, approve, get, pending };

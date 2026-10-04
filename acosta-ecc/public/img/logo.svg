@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64" role="img" aria-label="Soldadura Acosta · La Palma">
+  <rect width="64" height="64" rx="14" fill="#161b21"/>
+  <path d="M17 49 32 15 47 49" fill="none" stroke="#e8ecef" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 37h17" stroke="#ff6a1a" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#ffb703" stroke-width="3" stroke-linecap="round"><path d="M44 11l5-5M49 19l7-3M38 7l2-5"/></g>
+  <text x="78" y="33" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="1.5" fill="#161b21">SOLDADURA ACOSTA</text>
+  <text x="79" y="53" font-family="Bahnschrift, 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="3.2" fill="#d9540a">LA PALMA · CERRAJERÍA Y METAL</text>
+</svg>

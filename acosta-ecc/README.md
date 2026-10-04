@@ -12,13 +12,26 @@ Requisito: Node.js 18 o superior.
 
 ```bash
 cd acosta-ecc
-npm start          # abre http://localhost:3000   (otro puerto: PORT=3100 npm start)
+npm start          # web pública: http://localhost:3000   ·   panel interno: http://localhost:3000/panel
+                   # (otro puerto: PORT=3100 npm start)
 npm run demo       # mismo caso de medianoche, por terminal y con colores
-npm test           # 11 tests de guardrails
+npm test           # tests de guardrails y del formulario
 ```
 
 En la web, elige un escenario, pulsa **Enviar al sistema** y, cuando el caso quede en
 «Esperando propietario», aprueba como José Ángel indicando su disponibilidad real.
+
+## Web pública y panel interno
+
+- **`/` Web pública** (la que verá el cliente): portada, servicios, urgencias, cómo trabajamos, zonas,
+  formulario de presupuesto, botones de llamada y WhatsApp (669 76 86 59), SEO local y páginas legales.
+  Sin cookies ni fuentes externas.
+- **`/panel` Panel interno** (solo accesible desde este equipo): consola de los agentes. Las solicitudes del
+  formulario de la web aparecen en «Solicitudes de la web pendientes» para que José Ángel las apruebe.
+- El formulario público pasa por los 4 agentes, pero **solo devuelve al visitante un mensaje seguro**:
+  nunca la traza, los borradores ni los precios internos.
+- Pendientes antes de publicar: completar `privacidad.html` y `aviso-legal.html` (campos «COMPLETAR»),
+  logo y fotos reales, y avisar a José Ángel de cada solicitud (correo/WhatsApp); hoy se guardan solo en memoria.
 
 ## Escenarios incluidos
 
@@ -36,6 +49,9 @@ En la web, elige un escenario, pulsa **Enviar al sistema** y, cuando el caso que
 ## Estructura
 
 ```
+public/index.html    Web pública (css/, js/, img/ con logo y marca)
+public/panel.html    Consola interna de los agentes
+src/contact.js       Formulario público: validación, límite por IP, respuesta segura
 src/security.js      A3  Vault de tokens, pre-chequeo de entrada, revisión de salida
 src/creator.js       A1  Borradores (simulado con plantillas; en producción, un LLM)
 src/supervisor.js    A2  Checklist P/T/E/V/C, solo lectura, firma ligada al hash del texto

@@ -12,7 +12,7 @@ const RE = {
   email: /[\w.+-]+@[\w-]+\.[\w.-]+/g,
   phone: /(?:\+34[\s.-]?)?[6-9]\d{2}[\s.-]?\d{3}[\s.-]?\d{3}\b/g,
   address: /\b(?:calle|c\/|avda\.?|avenida|plaza|camino|carretera)\s+[\wáéíóúñÁÉÍÓÚÑ]+(?:\s+[\wáéíóúñÁÉÍÓÚÑ]+){0,3}(?:\s*,?\s*(?:n[º°o.]*\s*)?\d{1,3})?/gi,
-  name: /\b(?:soy|me llamo)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+)/g,
+  name: /\b(?:[Ss]oy|[Mm]e llamo)\s+([A-ZÁÉÍÓÚÑ][a-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚÑ][a-záéíóúñ]+){0,2})/g,
 };
 
 const HARD_BLOCK = [
