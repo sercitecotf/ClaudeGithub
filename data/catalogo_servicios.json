@@ -1,0 +1,8 @@
+{
+  "_aviso": "EJEMPLO para desarrollo. Pendiente de validación por José Ángel Acosta Carballo.",
+  "servicios": [
+    {"id": "apertura_puerta", "nombre": "Apertura de puerta", "requiere_visita": false, "requiere_titularidad": true},
+    {"id": "reja_ventana", "nombre": "Reja a medida para ventana", "requiere_visita": true},
+    {"id": "puerta_metalica", "nombre": "Puerta metálica a medida", "requiere_visita": true}
+  ]
+}

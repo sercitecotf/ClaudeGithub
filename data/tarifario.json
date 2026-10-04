@@ -1,0 +1,9 @@
+{
+  "_aviso": "EJEMPLO para desarrollo. Los importes reales deben ser validados y firmados por José Ángel Acosta Carballo.",
+  "igic": 0.07,
+  "tarifas": {
+    "CER-APE-01": {"concepto": "Apertura puerta sin daños (cilindro estándar)", "importe": 60},
+    "REC-NOC-01": {"concepto": "Recargo nocturno/festivo", "importe": 30},
+    "DES-LLA-01": {"concepto": "Desplazamiento zona Los Llanos", "importe": 15}
+  }
+}
