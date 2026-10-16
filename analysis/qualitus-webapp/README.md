@@ -1,0 +1,104 @@
+# Análisis de Qualitus (surpan.qualitus.com)
+
+Objetivo: entender la aplicación en producción, sin soporte del proveedor, para
+construir un reemplazo propio. Análisis hecho sobre lo que entrega el servidor
+públicamente: la página de login y el bundle de JavaScript/CSS de la interfaz
+(`application-*.js` y `application-*.css` servidos por el asset pipeline de
+Rails). No se usaron credenciales ni se accedió a datos de ningún usuario.
+
+## Qué es la aplicación
+
+Captura del panel principal (aportada por el usuario, ya autenticado) confirma
+que es un sistema de **gestión de calidad e inocuidad alimentaria (tipo
+APPCC/HACCP)**, con estos módulos en el menú:
+
+Proveedores · Agua · Puntos de Control · Materias Primas · Limpieza ·
+Auditorías · Fichas de Producto · Mantenimiento · Inspecciones · Compras ·
+Temperatura · No Conformidades · Producción · Grupos de Trabajo · Análisis ·
+Inventario · Plagas · Tareas · Expediciones · Residuos · Documentos de
+Certificación.
+
+Pie de página: "Copyright © 2012-2016 Qualitus". La marca de tiempo del
+copyright y el stack (ver abajo) sugieren una aplicación Rails con varios años
+sin actualizar en el frontend.
+
+## Stack técnico identificado
+
+Del `<head>` de la página de login (`login-page.html`) y del propio bundle:
+
+- **Backend:** Ruby on Rails (asset pipeline / Sprockets, rutas `/users/sign_in`,
+  `/users/password/new`, formularios generados con el patrón de **SimpleForm**
+  `authenticity_token`/`utf8` de Rails, gema **Devise** para autenticación por
+  las rutas `users/...`).
+- **Frontend:**
+  - jQuery 3.5.1 (CDN de Google), jQuery UI (datepicker, dialog, menu, slider,
+    spinner).
+  - Bootstrap 3 (`navbar`, `btn`, clases `.form-group`).
+  - **select2** para selects con búsqueda.
+  - **FullCalendar** (con locale `es`) para calendarios de tareas e informes.
+  - **Dygraph** para gráficos de series temporales — probablemente el módulo
+    de Temperatura.
+  - **FilePond** (+ plugin `FilePondPluginImagePreview`) para subir archivos,
+    incluyendo advertencia de tamaño para vídeos (>50 MB).
+  - **jsTree** con plugin `checkbox` para el árbol de permisos por rol
+    (`#permissions`).
+  - **BootstrapDialog** para modales de confirmación y vistas rápidas.
+  - **fabric.js** y **tui-image-editor** (+ `tui-color-picker`) para anotar o
+    editar imágenes (probablemente evidencia fotográfica de inspecciones o
+    no conformidades).
+  - Un plugin propio `doubleScroll` (scrollbar superior sincronizada, para
+    tablas anchas).
+  - Patrón **cocoon** (gema Rails) para formularios anidados dinámicos: se ve
+    en los eventos `cocoon:after-insert` / `cocoon:after-remove` /
+    `cocoon:before-remove` repetidos en casi todos los módulos.
+
+## Mapa de dominio (del JS + del menú)
+
+| Módulo del menú | Evidencia en el JS |
+|---|---|
+| **Tareas** | `onTaskCategoryChange`, clases `.task-fields` / `.specific-task-data`, calendario `.tasks-calendar` con `fullCalendar` |
+| **Auditorías** | `#audit_category` (interno/externo), `#audit_items` con `.audit-requirements-select`, ruta `GET /audit_requirements/:id/pull` para traer la descripción del requisito |
+| **Proveedores** | `#provider_provider_category_id`, `#provider_documents` (anidado con cocoon), `.provider-category-document`, `#provider_state` con `.provider_exception_reason` (estado de excepción) |
+| **Compras** | `#purchase_provider_id`, `#purchase_components` (anidado), filtra componentes por proveedor con `data-provider` |
+| **Fichas de Producto** | `#product_sheet_category`, `#product_sheet_stages` con `.stage-provider-components`, rutas `GET /components/load_xhr_data_components` y `GET /components/:id/load_xhr_data_component_providers` |
+| **Puntos de Control** | `.masterControlPonts`, `.controllable-resource`, ruta `POST /report_control_points/store` |
+| **Inspecciones** | `#inspection_category`, `#inspection_schedule`, `#inspection_places` (anidado), ruta `GET /places.json` y `GET /inspection_result_sets/new` (carga dinámica por AJAX con `dataType: "script"`, patrón `respond_to :js` de Rails) |
+| **No Conformidades** | `#issue_issuable_type` / `#issue_issuable_id` — asociación polimórfica de Rails (`issuable_type` + `issuable_id`), ruta `GET /origins` según el tipo elegido |
+| **Grupos de Trabajo / usuarios** | `.user_roles` → `GET /users/functionalities` (permisos dependientes del rol), árbol de permisos con jsTree, alta de empleados con usuario asociado o predefinido (`associate_user`, `predefined_user`) |
+| **Temperatura** | Uso de Dygraph para series temporales; no se vio ruta específica en el HTML/JS público |
+| **Agua, Limpieza, Mantenimiento, Producción, Inventario, Plagas, Expediciones, Residuos, Documentos de Certificación, Análisis** | Aparecen en el menú pero no dejaron rastro distintivo en el JS público; probablemente reutilizan los mismos patrones (formularios anidados cocoon, selects dependientes vía AJAX, archivos con FilePond) |
+
+Un detalle reutilizable para el rediseño: casi todo módulo con sub-ítems (items
+de auditoría, documentos de proveedor, componentes de ficha de producto,
+lugares de inspección) usa el mismo patrón: **formulario anidado con cocoon +
+select dependiente que dispara una petición AJAX que devuelve un fragmento de
+JavaScript** (`dataType: "script"`, no JSON), típico de Rails UJS con vistas
+`.js.erb`.
+
+## Archivos guardados
+
+- `login-page.html`: HTML de `/users/sign_in` (token CSRF y de formulario
+  reemplazados por `[redacted]`).
+- `js-bundle/application.pretty.js`: el bundle de JS de la interfaz,
+  formateado para lectura (fuente: `application-9c5a50eb...js`, 1.1 MB
+  minificado → 1.95 MB formateado, 36 759 líneas). Incluye todas las
+  librerías de terceros además del código propio.
+- `js-bundle/application.css`: hoja de estilos de la interfaz
+  (`application-cd54ad3f...css`).
+
+## Límites del análisis
+
+- Solo se analizó lo que el servidor entrega sin autenticación (login +
+  assets estáticos). No se inició sesión ni se exploraron datos ni rutas que
+  requieran credenciales.
+- El bundle de JS mezcla librerías y código propio en una sola pasada de
+  minificación, así que no hay una separación limpia por archivo original;
+  la tabla de arriba identifica el código propio por los selectores y rutas
+  específicas del dominio (`task-fields`, `inspection_category`, etc.), no por
+  límites de archivo.
+- Varios módulos del menú (Agua, Limpieza, Producción, Inventario, Plagas,
+  Residuos, Documentos de Certificación, Análisis, Expediciones,
+  Mantenimiento) no mostraron rutas o selectores propios en lo que se
+  revisó del bundle; es probable que reutilicen los mismos patrones de
+  cocoon y AJAX descritos arriba, pero no se confirmó código específico de
+  cada uno.
