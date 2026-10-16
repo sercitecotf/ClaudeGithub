@@ -34,29 +34,32 @@ dominio APPCC — auditorías, puntos de control, inspecciones, no
 conformidades, mantenimiento, temperatura, tareas, documentos IFS — porque
 SAP B1 no modela nada de eso.
 
-### Preguntas abiertas antes de diseñar la integración
+### Estado de la integración
 
-No se puede cerrar el diseño de esta integración sin saber:
+Confirmado por el usuario: **ya existe** conexión funcionando a SAP Business
+One vía Service Layer, usada por otros paneles/apps propios. Esto quiere
+decir que el módulo nuevo de Qualitus no tiene que diseñar esta integración
+desde cero — tiene que **reutilizar el mismo patrón de conexión** (mismo
+usuario de integración, misma sesión/autenticación, mismo host) ya validado
+en producción, para no duplicar credenciales ni abrir una segunda vía de
+acceso a SAP.
 
-1. **Versión/hosting de SAP B1**: ¿on-premise, Cloud, sobre HANA o SQL
-   Server? Service Layer requiere HANA (o B1 reciente sobre SQL con Service
-   Layer habilitado); si es una versión vieja solo con DI API, habría que
-   revisar esto.
-2. **¿Service Layer ya está habilitado y accesible** desde donde correrá la
-   app nueva (red, certificado, usuario de integración con los permisos
-   mínimos necesarios)?
-3. **Campos personalizados (UDF/UDT)** en `Items` y `BusinessPartners` que la
-   app nueva necesite mostrar (p. ej. categoría de proveedor como la que ya
-   usa Qualitus, alérgenos, etc.) — si existen, hay que mapearlos.
-4. **Tiempo real vs. sincronización periódica**: ¿cada pantalla consulta
-   Service Layer al vuelo, o se sincroniza a una tabla local cada cierto
-   tiempo (más rápido de mostrar, pero con desfase)? Para listados con
-   cientos de proveedores o ítems, lo normal es cachear y refrescar
-   periódicamente, no consultar Service Layer en cada carga de página.
-5. **Dirección de la sincronización**: ¿la app nueva solo lee de SAP, o en
-   algún caso necesita escribir de vuelta (p. ej. marcar un proveedor como
-   "aprobado" en la app y que eso se refleje en SAP)? Si es solo lectura,
-   la integración es mucho más simple.
+Para poder documentar el patrón concreto (en vez de asumirlo genérico de
+Service Layer) sería útil ver, de esa app/paneles existentes:
+
+1. Cómo se autentica contra Service Layer (login a `/b1s/v1/Login`, manejo
+   de la cookie de sesión `B1SESSION`, renovación cuando expira).
+2. Qué entidades consultan hoy (`Items`, `BusinessPartners`, u otras) y con
+   qué filtros/`$select` — para replicar exactamente los mismos campos que
+   ya usan en vez de reinventar el mapeo.
+3. Si consultan Service Layer al vuelo en cada request, o si ya tienen algo
+   de caché/sincronización periódica — para que el módulo de Qualitus siga
+   el mismo criterio y no quede como el único punto que golpea SAP en
+   tiempo real.
+
+Si me pasas ese código (sin credenciales ni tokens, solo la forma en que
+arma las llamadas) lo reviso y documento el patrón exacto a seguir en vez de
+una guía genérica de Service Layer.
 
 ## Qué es la aplicación
 
