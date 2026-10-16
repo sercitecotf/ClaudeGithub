@@ -149,6 +149,69 @@ Descripción (texto libre, en los ejemplos reales menciona normas como
 ISO 9001:2015 e IFS), Estado (Cerrada), acción **Ver**. Pocas decenas de
 registros. Confirma el `#audit_category` externo/interno visto en el JS.
 
+### Inspecciones (`LISTA DE INSPECCIONES`)
+
+Columnas: Nombre (título libre de la inspección, p. ej. "Control de Sala
+Octubre" o el nombre de un contenedor/proveedor), Inspeccionado por, Fecha
+Inspección, Verificado por, Fecha de Verificación, Categoría (p. ej. Proceso
+productivo, Control de proveedores), Periodicidad (Diario, …), Estado
+(Programado), acciones **Cerrar** y **Ver**; exportación a CSV. 1567
+registros. Mismo patrón de doble firma que Mantenimiento (inspeccionado por /
+verificado por), y confirma `#inspection_category` / `#inspection_schedule`
+(periodicidad) ya vistos en el JS. El botón **Cerrar** sugiere un estado de
+ciclo de vida (Programado → Cerrado) además de lo que ya se veía
+(`inspection_result_sets`, lugares de inspección).
+
+### No Conformidades (`LISTA DE NO CONFORMIDADES`)
+
+Columnas: E.I. (icono de estado — visto en rojo/interrogación o verde/check,
+probablemente "Evaluación de Impacto" o similar: abierta vs. resuelta),
+ID, Categoría (Observación, Desviación), Descripción (texto libre), Origen
+(enlace a "Inspección" — la asociación polimórfica `issuable_type` /
+`issuable_id` vista en el JS, donde el origen también podría ser otro módulo
+además de inspección), Fecha de Detección, Acciones Correctivas (Sí/No, con
+icono de check cuando existen), acción **Ver**; buscador con **Búsqueda
+Avanzada** desplegable y exportación a CSV. 1180 registros. Esto es el
+módulo "No Conformidades" del menú principal, construido sobre lo que el JS
+llama "issues" (`#issue_issuable_type`, `#issue_issuable_id`, `/origins`).
+
+### Análisis (`LISTA DE ANÁLISIS`)
+
+Columnas: Fecha de Solicitud, Nombre (solicitante, a veces vacío), Objeto de
+Análisis (texto compuesto: tipo de reporte + elemento + fecha, p. ej.
+"Reporte de Temperatura / <elemento> - <fecha>", "Reporte de Limpieza / …",
+"Reporte de Agua / …"), Estado (Solicitado), acciones **Ver** y **Enviar
+Resultados**. 17 registros. Confirma que "Análisis" no es un módulo
+independiente con su propio dominio, sino una **cola de solicitudes de
+laboratorio** que referencia reportes de otros módulos (Temperatura, Agua,
+Limpieza) — el objeto analizado siempre es un reporte existente, no un dato
+propio de Análisis.
+
+### Tareas (`LISTA DE TAREAS`)
+
+Igual que Temperatura, es un **calendario mensual/semanal/diario**
+(FullCalendar, con selector Mes/Semana/Día) en vez de tabla. Cada celda es
+una tarea con su categoría entre paréntesis (p. ej. "(MANTENIMIENTO)") y
+color según estado/urgencia (verde completada, rojo pendiente o vencida, a
+juzgar por el contraste). El texto de la tarea suele indicar el tipo
+("CONTROL CLORO Y TEMPERATURA", "MANTENIMIENTO PREVENTIVO", "LIMPIEZA
+MÁQUINA...") y a veces el responsable asignado. Esto confirma
+`onTaskCategoryChange` y `.tasks-calendar` del JS: las tareas son genéricas
+y su categoría decide qué campos del formulario mostrar
+(`.specific-task-data`), y aquí se ve que categorías como Mantenimiento y
+Limpieza generan tareas recurrentes automáticamente en el calendario.
+
+### Documentos IFS (`LISTA DE DOCUMENTOS IFS`)
+
+Columnas: Categoría (p. ej. "Responsabilidad de la dirección", "Sistema de
+gestión de la calidad y la seguridad alimentaria", "Gestión de los
+recursos"), Código IFS, Código BRC, Nombre, Descripción, acción **Ver**. 44
+registros. Es el catálogo de "Documentos de Certificación" del menú
+principal: cada documento interno de la empresa (política, manual de
+calidad, procedimientos) está mapeado a los puntos de las normas de
+certificación alimentaria **IFS Food** y **BRC**, con numeración de ambas
+normas en paralelo.
+
 ## Límites del análisis
 
 - Solo se analizó lo que el servidor entrega sin autenticación (login +
@@ -159,15 +222,17 @@ registros. Confirma el `#audit_category` externo/interno visto en el JS.
   la tabla de arriba identifica el código propio por los selectores y rutas
   específicas del dominio (`task-fields`, `inspection_category`, etc.), no por
   límites de archivo.
-- Varios módulos del menú (Agua, Limpieza, Producción, Inventario, Plagas,
-  Residuos, Documentos de Certificación, Análisis, Expediciones) no
-  mostraron rutas o selectores propios en lo que se revisó del bundle, ni se
-  confirmaron con capturas; es probable que reutilicen los mismos patrones
-  de cocoon y AJAX descritos arriba, o la misma estructura de "Puntos de
-  Control" (Agua aparece como categoría dentro de ese módulo), pero no se
-  confirmó código ni estructura de campos específica de cada uno.
+- Módulos del menú aún sin confirmar con capturas ni con código propio en el
+  bundle: Agua, Limpieza, Producción, Inventario, Plagas, Residuos,
+  Expediciones, Compras, Fichas de Producto, Grupos de Trabajo. Es probable
+  que Agua y Limpieza no sean módulos independientes sino categorías dentro
+  de "Puntos de Control" (se vio "Agua" como categoría ahí) y dentro de
+  "Análisis" (se vio "Reporte de Limpieza" y "Reporte de Agua" como objetos
+  de análisis), pero no se confirmó su propia pantalla de listado.
 - Las capturas de pantalla que confirmaron Proveedores, Mantenimiento,
-  Temperatura, Puntos de Control y Auditorías mostraban datos reales
-  (nombres de empleados y auditores, emails, teléfonos, matrículas, nombres
-  de clientes/proveedores). Esos datos no se guardaron en el repo; el
-  documento solo describe la estructura de campos con ejemplos genéricos.
+  Temperatura, Puntos de Control, Auditorías, Inspecciones, No Conformidades,
+  Análisis, Tareas y Documentos IFS mostraban datos reales (nombres de
+  empleados y auditores, emails, teléfonos, matrículas, nombres de
+  clientes/proveedores, descripciones de incidentes). Esos datos no se
+  guardaron en el repo; el documento solo describe la estructura de campos
+  con ejemplos genéricos.
