@@ -86,6 +86,69 @@ JavaScript** (`dataType: "script"`, no JSON), típico de Rails UJS con vistas
 - `js-bundle/application.css`: hoja de estilos de la interfaz
   (`application-cd54ad3f...css`).
 
+## Módulos confirmados con capturas de pantalla (sesión autenticada)
+
+El usuario compartió capturas de 5 listados ya logueado. No se guardaron las
+imágenes en el repo porque muestran datos reales (nombres de empleados,
+auditores, emails, teléfonos y matrículas); aquí solo se documenta la
+**estructura de campos**, con ejemplos genéricos en vez de los datos reales.
+
+### Proveedores (`LISTA DE PROVEEDORES`)
+
+Columnas: Código, Nombre (con la categoría del proveedor como subtítulo, p. ej.
+"Laboratorio", "Mantenimiento", "Prov. Productos distribución"), Email,
+Teléfono, Estado de Documentos (indicador en punto de color), Estado
+(Pendiente / Aprobado), acciones **Contratos** y **Ver**. Paginado de 20 en 20
+("Mostrando 1-20 de proveedores N en total"). Confirma lo que ya se veía en el
+JS: `provider_provider_category_id` es la categoría mostrada como subtítulo, y
+"Estado de Documentos" es el semáforo que depende de `#provider_documents` /
+`.provider-category-document` (documentos requeridos según la categoría).
+
+### Mantenimiento (`LISTA DE REPORTES DE MANTENIMIENTO`)
+
+Columnas: Elemento (activo o equipo, p. ej. depósito, cuentalitros, horno),
+Categoría (Preventivo / Verificación), Reportado por, Fecha de Reporte,
+Verificado por, Fecha de Verificación, Estado (Verificado), Comentarios,
+acción **Ver**; botón de exportar a **CSV**. Es un módulo separado de
+"Puntos de Control", con su propio flujo de reporte → verificación por una
+segunda persona. No se había visto rastro de este módulo en el JS público; es
+un modelo nuevo a documentar (`maintenance_reports` o similar, con
+`reported_by`, `verified_by`, `verified_at`, `comments`, categoría y elemento
+asociado).
+
+### Temperatura (`LISTA DE REPORTES DE TEMPERATURA`)
+
+Vista de **calendario mensual** (no tabla), construida con FullCalendar (igual
+que `.tasks-calendar` / `.reports-calendar` vistos en el JS, con
+`lang: "es"`). Cada día agrupa entradas por categoría de elemento (p. ej.
+cámaras de un obrador, vehículos de reparto) y, dentro de cada categoría, una
+fila por elemento (matrícula o cámara). Esto confirma que el Dygraph incluido
+en el bundle se usa en el **detalle** de cada reporte (gráfico de la serie de
+temperatura), mientras que el listado usa calendario. También tiene
+exportación a CSV.
+
+### Puntos de Control (`LISTA DE PUNTOS DE CONTROL`)
+
+Columnas: Objeto (ubicación/equipo, p. ej. "Obrador frío lavamanos 1"),
+Categoría (p. ej. Agua), Nombre (p. ej. "Nivel de cloro libre", "Color",
+"Sabor", "Olor", "Turbidez"), Tipo de Dato (**Numérico** / **Checkbox**, y por
+el JS también **Texto**), Valor por Defecto, Valor Mínimo Aceptable, Valor
+Máximo Aceptable, Texto por Defecto, Unidad de Medida, Requisito (Sí/No),
+Crítico (Sí/No), acción **Ver**. 1352 registros en el entorno real. Esta
+tabla es la confirmación directa del código visto antes en
+`js-bundle/application.pretty.js` (función que muestra `.numeric-fields`,
+`.boolean-fields` o `.text-fields` según el tipo de dato elegido): cada punto
+de control es una definición de medición con tipo, rango aceptable y si es
+crítico (esto es el corazón del modelo APPCC/HACCP — puntos críticos de
+control).
+
+### Auditorías (`LISTA DE AUDITORÍAS`)
+
+Columnas: Tipo Auditoría (Externa / Interna), Fecha de Auditoría, Auditor,
+Descripción (texto libre, en los ejemplos reales menciona normas como
+ISO 9001:2015 e IFS), Estado (Cerrada), acción **Ver**. Pocas decenas de
+registros. Confirma el `#audit_category` externo/interno visto en el JS.
+
 ## Límites del análisis
 
 - Solo se analizó lo que el servidor entrega sin autenticación (login +
@@ -97,8 +160,14 @@ JavaScript** (`dataType: "script"`, no JSON), típico de Rails UJS con vistas
   específicas del dominio (`task-fields`, `inspection_category`, etc.), no por
   límites de archivo.
 - Varios módulos del menú (Agua, Limpieza, Producción, Inventario, Plagas,
-  Residuos, Documentos de Certificación, Análisis, Expediciones,
-  Mantenimiento) no mostraron rutas o selectores propios en lo que se
-  revisó del bundle; es probable que reutilicen los mismos patrones de
-  cocoon y AJAX descritos arriba, pero no se confirmó código específico de
-  cada uno.
+  Residuos, Documentos de Certificación, Análisis, Expediciones) no
+  mostraron rutas o selectores propios en lo que se revisó del bundle, ni se
+  confirmaron con capturas; es probable que reutilicen los mismos patrones
+  de cocoon y AJAX descritos arriba, o la misma estructura de "Puntos de
+  Control" (Agua aparece como categoría dentro de ese módulo), pero no se
+  confirmó código ni estructura de campos específica de cada uno.
+- Las capturas de pantalla que confirmaron Proveedores, Mantenimiento,
+  Temperatura, Puntos de Control y Auditorías mostraban datos reales
+  (nombres de empleados y auditores, emails, teléfonos, matrículas, nombres
+  de clientes/proveedores). Esos datos no se guardaron en el repo; el
+  documento solo describe la estructura de campos con ejemplos genéricos.
