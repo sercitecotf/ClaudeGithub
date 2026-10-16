@@ -18,13 +18,13 @@ evitar que vuelva a pasar).
 
 ## Estado
 
-**Primer módulo construido: Puntos de Control.** Es el núcleo del sistema
-APPCC — de él dependen (o se espera que dependan más adelante) Temperatura,
-Agua, Limpieza, Inspecciones y Análisis. Ver
-`analysis/qualitus-webapp/README.md` para por qué se eligió este módulo
-primero.
+**Módulos construidos: Puntos de Control y Lecturas (Temperatura/Agua/...).**
+Puntos de Control es el núcleo del sistema APPCC; Lecturas es lo que en
+Qualitus aparecía como "Reporte de Temperatura", "Reporte de Agua", etc. —
+todos son, en el fondo, mediciones registradas contra un punto de control.
+Ver `analysis/qualitus-webapp/README.md` para el razonamiento.
 
-Incluye:
+**Puntos de Control** (`control_points`):
 - Modelo `ControlPoint` con las mismas columnas vistas en la captura de
   Qualitus (objeto, categoría, nombre, tipo de dato, valores aceptables,
   unidad de medida, requisito, crítico), con validación a nivel de modelo
@@ -32,12 +32,28 @@ Incluye:
   unidad; uno de checkbox/texto no puede llevar rango numérico.
 - Lista con buscador y paginación (equivalente a "Mostrando 1-20 de N en
   total" de Qualitus) y detalle, ambos protegidos por login.
-- Panel de administración (`/admin/`) para altas/bajas mientras no haya
-  formularios propios.
-- 12 pruebas automáticas (modelo + vistas) — corren en cada cambio, no son
-  documentación que se desactualiza.
 
-**Sin construir todavía:** el resto de los 21 módulos del menú, y la
+**Lecturas** (`readings`), construido sobre Puntos de Control:
+- Modelos `Elemento` (lo que se mide con el tiempo: una cámara, un
+  vehículo...) y `Lectura` (una medición concreta, en una fecha, de un
+  punto de control sobre un elemento).
+- `Lectura.dentro_de_rango` calcula automáticamente si una lectura numérica
+  se sale del rango aceptable de su punto de control — la base para que,
+  más adelante, una lectura fuera de rango en un punto **crítico** genere
+  una No Conformidad automáticamente.
+- Vista de lista por mes, agrupada por día (`/lecturas/<categoría>/`,
+  p. ej. `/lecturas/Temperatura/`), con navegación de mes anterior/siguiente.
+  **Simplificación consciente**: Qualitus usa un calendario interactivo
+  (FullCalendar, con colores y drag); esta versión es una tabla agrupada por
+  día — más simple de construir y de probar. La interacción tipo calendario
+  puede añadirse después sin tocar el modelo de datos.
+
+Ambos módulos: panel de administración (`/admin/`) para altas/bajas mientras
+no haya formularios propios, y pruebas automáticas (32 en total entre los
+dos módulos) que corren en cada cambio.
+
+**Sin construir todavía:** el resto de los 19 módulos del menú restantes, y
+la
 integración con SAP Business One (Service Layer) para Proveedores y
 Materias Primas/Productos — queda pendiente de que el usuario dé acceso a
 la conexión ya existente (ver `analysis/qualitus-webapp/README.md`,

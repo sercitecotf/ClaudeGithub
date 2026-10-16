@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Reportes de {{ categoria }} · Qualitus Next{% endblock %}
+{% block content %}
+<h1>Lista de Reportes de {{ categoria }}</h1>
+
+<p>
+    <a href="?year={{ prev_year }}&amp;month={{ prev_month }}">&laquo; Mes anterior</a>
+    &nbsp;<strong>{{ month_reference|date:"F Y" }}</strong>&nbsp;
+    <a href="?year={{ next_year }}&amp;month={{ next_month }}">Mes siguiente &raquo;</a>
+</p>
+
+{% if not dias %}
+<p>No hay lecturas registradas este mes para «{{ categoria }}».</p>
+{% endif %}
+
+{% for dia, lecturas_del_dia in dias %}
+<h3>{{ dia|date:"l d/m/Y" }}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Elemento</th>
+            <th>Punto de Control</th>
+            <th>Valor</th>
+            <th>Dentro de Rango</th>
+            <th>Registrado Por</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lectura in lecturas_del_dia %}
+        <tr>
+            <td>{{ lectura.elemento }}</td>
+            <td>{{ lectura.control_point.nombre }}</td>
+            <td>
+                {% if lectura.valor_numerico is not None %}{{ lectura.valor_numerico }} {{ lectura.control_point.unidad_medida }}
+                {% elif lectura.valor_booleano is not None %}{{ lectura.valor_booleano|yesno:"Sí,No" }}
+                {% else %}{{ lectura.valor_texto }}
+                {% endif %}
+            </td>
+            <td>
+                {% if lectura.dentro_de_rango is None %}—
+                {% elif lectura.dentro_de_rango %}<span class="badge badge-yes">Sí</span>
+                {% else %}<span class="badge badge-alert">No</span>
+                {% endif %}
+            </td>
+            <td>{{ lectura.registrado_por }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+{% endblock %}

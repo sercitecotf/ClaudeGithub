@@ -15,4 +15,6 @@
     <tr><th>Requisito</th><td>{{ control_point.requisito|yesno:"Sí,No" }}</td></tr>
     <tr><th>Crítico</th><td>{{ control_point.critico|yesno:"Sí,No" }}</td></tr>
 </table>
+
+<p><a href="{% url 'readings:month_list' control_point.categoria.nombre %}">Ver lecturas de la categoría «{{ control_point.categoria }}»</a></p>
 {% endblock %}
