@@ -6,6 +6,58 @@ públicamente: la página de login y el bundle de JavaScript/CSS de la interfaz
 (`application-*.js` y `application-*.css` servidos por el asset pipeline de
 Rails). No se usaron credenciales ni se accedió a datos de ningún usuario.
 
+## Requisito para la reconstrucción: maestros desde SAP Business One
+
+Decisión del usuario (no es parte del análisis de Qualitus, es un requisito
+para la app nueva): los datos maestros — **Productos / Fichas de Producto** y
+**Materias Primas**, y probablemente **Proveedores** — no se van a gestionar
+dentro de la app nueva. Se van a traer de **SAP Business One**, por
+**Service Layer** (API REST/OData que expone SAP B1 cuando corre sobre
+HANA; también existe para B1 clásico en versiones recientes).
+
+Esto cambia el modelo de datos respecto al Qualitus actual: ahí Proveedores
+y Fichas de Producto son tablas propias, con su propio formulario de alta.
+En la app nueva, esas pantallas pasan de **CRUD propio** a una
+**vista de solo lectura sobre una caché sincronizada de SAP B1** (o una
+consulta directa a Service Layer en el momento, si la latencia y el volumen
+lo permiten). Las entidades típicas de Service Layer para esto son:
+
+- `BusinessPartners` → Proveedores (filtrando por `CardType = 'S'`,
+  suppliers).
+- `Items` → Materias Primas y/o Productos (según cómo esté modelado en su
+  SAP: puede que materia prima y producto terminado sean el mismo tipo de
+  `Item` con un `ItemsGroupCode` distinto, o `U_` campos propios/UDF para
+  distinguir).
+
+Lo que seguiría siendo propio de la app nueva (no de SAP): el resto del
+dominio APPCC — auditorías, puntos de control, inspecciones, no
+conformidades, mantenimiento, temperatura, tareas, documentos IFS — porque
+SAP B1 no modela nada de eso.
+
+### Preguntas abiertas antes de diseñar la integración
+
+No se puede cerrar el diseño de esta integración sin saber:
+
+1. **Versión/hosting de SAP B1**: ¿on-premise, Cloud, sobre HANA o SQL
+   Server? Service Layer requiere HANA (o B1 reciente sobre SQL con Service
+   Layer habilitado); si es una versión vieja solo con DI API, habría que
+   revisar esto.
+2. **¿Service Layer ya está habilitado y accesible** desde donde correrá la
+   app nueva (red, certificado, usuario de integración con los permisos
+   mínimos necesarios)?
+3. **Campos personalizados (UDF/UDT)** en `Items` y `BusinessPartners` que la
+   app nueva necesite mostrar (p. ej. categoría de proveedor como la que ya
+   usa Qualitus, alérgenos, etc.) — si existen, hay que mapearlos.
+4. **Tiempo real vs. sincronización periódica**: ¿cada pantalla consulta
+   Service Layer al vuelo, o se sincroniza a una tabla local cada cierto
+   tiempo (más rápido de mostrar, pero con desfase)? Para listados con
+   cientos de proveedores o ítems, lo normal es cachear y refrescar
+   periódicamente, no consultar Service Layer en cada carga de página.
+5. **Dirección de la sincronización**: ¿la app nueva solo lee de SAP, o en
+   algún caso necesita escribir de vuelta (p. ej. marcar un proveedor como
+   "aprobado" en la app y que eso se refleje en SAP)? Si es solo lectura,
+   la integración es mucho más simple.
+
 ## Qué es la aplicación
 
 Captura del panel principal (aportada por el usuario, ya autenticado) confirma
