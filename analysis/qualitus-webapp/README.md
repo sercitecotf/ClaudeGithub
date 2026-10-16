@@ -6,6 +6,14 @@ públicamente: la página de login y el bundle de JavaScript/CSS de la interfaz
 (`application-*.js` y `application-*.css` servidos por el asset pipeline de
 Rails). No se usaron credenciales ni se accedió a datos de ningún usuario.
 
+## Construcción de la app nueva: "Qualitus Next"
+
+Empezó la construcción en `app/` (raíz del repo). Stack elegido: **Django**,
+por ser una opción segura y de bajo mantenimiento a largo plazo (ver
+`app/README.md` para el razonamiento completo). Primer módulo construido:
+**Puntos de Control**, el núcleo del sistema APPCC. Detalle de lo
+construido, cómo correrlo y qué falta: `app/README.md`.
+
 ## Requisito para la reconstrucción: maestros desde SAP Business One
 
 Decisión del usuario (no es parte del análisis de Qualitus, es un requisito

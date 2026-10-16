@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ control_point.nombre }} · Qualitus Next{% endblock %}
+{% block content %}
+<p><a href="{% url 'control_points:list' %}">&laquo; Volver a la lista</a></p>
+<h1>{{ control_point.objeto }} · {{ control_point.nombre }}</h1>
+
+<table>
+    <tr><th>Categoría</th><td>{{ control_point.categoria }}</td></tr>
+    <tr><th>Tipo de Dato</th><td>{{ control_point.get_tipo_dato_display }}</td></tr>
+    <tr><th>Valor por Defecto</th><td>{{ control_point.valor_por_defecto|default:"—" }}</td></tr>
+    <tr><th>Valor Mínimo Aceptable</th><td>{{ control_point.valor_minimo_aceptable|default:"—" }}</td></tr>
+    <tr><th>Valor Máximo Aceptable</th><td>{{ control_point.valor_maximo_aceptable|default:"—" }}</td></tr>
+    <tr><th>Texto por Defecto</th><td>{{ control_point.texto_por_defecto|default:"—" }}</td></tr>
+    <tr><th>Unidad de Medida</th><td>{{ control_point.unidad_medida|default:"—" }}</td></tr>
+    <tr><th>Requisito</th><td>{{ control_point.requisito|yesno:"Sí,No" }}</td></tr>
+    <tr><th>Crítico</th><td>{{ control_point.critico|yesno:"Sí,No" }}</td></tr>
+</table>
+{% endblock %}

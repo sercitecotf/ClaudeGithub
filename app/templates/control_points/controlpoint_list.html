@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Lista de Puntos de Control · Qualitus Next{% endblock %}
+{% block content %}
+<h1>Lista de Puntos de Control</h1>
+
+<form class="search-form" method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Ingrese términos de búsqueda">
+    <button type="submit">Buscar</button>
+</form>
+
+<p>Mostrando {{ page_obj.start_index }} - {{ page_obj.end_index }} de puntos de control
+    {{ paginator.count }} en total</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Objeto</th>
+            <th>Categoría</th>
+            <th>Nombre</th>
+            <th>Tipo de Dato</th>
+            <th>Valor Mínimo Aceptable</th>
+            <th>Valor Máximo Aceptable</th>
+            <th>Unidad de Medida</th>
+            <th>Requisito</th>
+            <th>Crítico</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cp in control_points %}
+        <tr>
+            <td>{{ cp.objeto }}</td>
+            <td>{{ cp.categoria }}</td>
+            <td>{{ cp.nombre }}</td>
+            <td>{{ cp.get_tipo_dato_display }}</td>
+            <td>{{ cp.valor_minimo_aceptable|default:"" }}</td>
+            <td>{{ cp.valor_maximo_aceptable|default:"" }}</td>
+            <td>{{ cp.unidad_medida }}</td>
+            <td><span class="badge {% if cp.requisito %}badge-yes{% else %}badge-no{% endif %}">{{ cp.requisito|yesno:"Sí,No" }}</span></td>
+            <td><span class="badge {% if cp.critico %}badge-yes{% else %}badge-no{% endif %}">{{ cp.critico|yesno:"Sí,No" }}</span></td>
+            <td><a href="{% url 'control_points:detail' cp.pk %}">Ver</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="10">No hay puntos de control que coincidan con la búsqueda.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">&laquo; Anterior</a>
+    {% endif %}
+    <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+        <a href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">Siguiente &raquo;</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}
