@@ -1,0 +1,1 @@
+import{y as n,W as c}from"./index-Bhb7VNP4.js";const i=t=>{switch(t){case c.PROTISA:return"Protisa_GetDetalleOF";default:return"GetDetallesProduccion"}},d=async(t,e,a,o)=>{const s=i(a),r=await n(t,{apikey:e.apikey,...o},s,e);return{error:r.Error,detail:r.Detail}};export{d as g};

@@ -1,0 +1,1 @@
+import{h as o}from"./index-Bhb7VNP4.js";async function i({config:r,info:s,endPointConfig:a,database:t}){const e=await o({config:r,info:s,endPointConfig:a,database:t});return{detail:e.Result.Detail,error:e.Result.Error,message:e.Result.message}}export{i as g};

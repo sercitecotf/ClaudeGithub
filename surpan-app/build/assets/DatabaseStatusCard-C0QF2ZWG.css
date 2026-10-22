@@ -1,0 +1,1 @@
+.database-status-table-card-info-modal::part(content){display:flex;justify-content:center;align-items:center;width:400px;margin:auto;height:auto}@keyframes animatetop{0%{top:-300px;opacity:0}to{top:0;opacity:1}}

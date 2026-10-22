@@ -1,0 +1,1 @@
+import{l as a,m as i}from"./index-Bhb7VNP4.js";const n=(t,o=!0)=>{const e=a(t),r=i(t)==="m"?"el":"la";return o?`Creando ${r} ${e.toLowerCase()}...`:`Guardando ${r} ${e.toLowerCase()}...`};export{n as g};

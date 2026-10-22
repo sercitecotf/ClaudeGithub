@@ -1,0 +1,32 @@
+{
+  "name": "surpan-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync android",
+    "add:android": "cap add android",
+    "open:android": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor-community/file-opener": "*",
+    "@capacitor-community/sqlite": "*",
+    "@capacitor-mlkit/barcode-scanning": "*",
+    "@capacitor/android": "*",
+    "@capacitor/app": "*",
+    "@capacitor/camera": "*",
+    "@capacitor/core": "*",
+    "@capacitor/device": "*",
+    "@capacitor/filesystem": "*",
+    "@capacitor/geolocation": "*",
+    "@capacitor/haptics": "*",
+    "@capacitor/keyboard": "*",
+    "@capacitor/network": "*",
+    "@capacitor/preferences": "*",
+    "@capacitor/screen-orientation": "*",
+    "@capacitor/status-bar": "*",
+    "@capawesome/capacitor-file-picker": "*"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "*"
+  }
+}
