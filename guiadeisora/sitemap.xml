@@ -1,12 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://guiadeisora.net/index.html</loc></url>
-  <url><loc>https://guiadeisora.net/playas.html</loc></url>
-  <url><loc>https://guiadeisora.net/excursiones.html</loc></url>
-  <url><loc>https://guiadeisora.net/comer.html</loc></url>
-  <url><loc>https://guiadeisora.net/dormir.html</loc></url>
-  <url><loc>https://guiadeisora.net/como-llegar.html</loc></url>
-  <url><loc>https://guiadeisora.net/afiliados.html</loc></url>
-  <url><loc>https://guiadeisora.net/aviso-legal.html</loc></url>
-  <url><loc>https://guiadeisora.net/privacidad.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://guiadeisora.net/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/index.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/index.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/index.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/playas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/playas.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/playas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/playas.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/playas.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/playas.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/playas.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/excursiones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/excursiones.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/excursiones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/excursiones.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/excursiones.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/excursiones.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/excursiones.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comer.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comer.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comer.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/dormir.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/dormir.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/dormir.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/dormir.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/dormir.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/dormir.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/dormir.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comercios.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comercios.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/comercios.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/afiliados.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/afiliados.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/afiliados.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/privacidad.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/en/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/privacidad.html"/>
+  </url>
+  <url><loc>https://guiadeisora.net/de/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://guiadeisora.net/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://guiadeisora.net/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://guiadeisora.net/de/privacidad.html"/>
+  </url>
 </urlset>

@@ -1,11 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sanisidrodeabona.com/index.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/que-hacer.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/comer.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/dormir-cerca-aeropuerto.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/como-llegar.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/afiliados.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/aviso-legal.html</loc></url>
-  <url><loc>https://sanisidrodeabona.com/privacidad.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://sanisidrodeabona.com/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/index.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/index.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/index.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/que-hacer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/que-hacer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/que-hacer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/que-hacer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/que-hacer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/que-hacer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/que-hacer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/comer.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comer.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comer.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/dormir-cerca-aeropuerto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/dormir-cerca-aeropuerto.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/dormir-cerca-aeropuerto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/dormir-cerca-aeropuerto.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/dormir-cerca-aeropuerto.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/dormir-cerca-aeropuerto.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/dormir-cerca-aeropuerto.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/como-llegar.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/como-llegar.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/como-llegar.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comercios.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comercios.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/comercios.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/comercios.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/comercios.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/afiliados.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/afiliados.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/afiliados.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/afiliados.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/afiliados.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/aviso-legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/aviso-legal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/aviso-legal.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/privacidad.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/en/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/privacidad.html"/>
+  </url>
+  <url><loc>https://sanisidrodeabona.com/de/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sanisidrodeabona.com/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sanisidrodeabona.com/en/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sanisidrodeabona.com/de/privacidad.html"/>
+  </url>
 </urlset>

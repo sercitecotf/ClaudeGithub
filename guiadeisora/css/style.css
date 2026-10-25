@@ -90,3 +90,8 @@ article { max-width: 760px; }
 footer.site { border-top: 1px solid var(--border); background: var(--surface); padding: 28px 0; font-size: 0.9rem; color: var(--muted); }
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
 footer.site a { color: var(--muted); }
+
+nav.lang { display: flex; gap: 6px; }
+nav.lang a { text-decoration: none; font-size: 0.8rem; font-weight: 700; padding: 3px 8px; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); }
+nav.lang a[aria-current="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+nav.lang a:hover { color: var(--accent); border-color: var(--accent); }
