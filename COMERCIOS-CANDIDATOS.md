@@ -1,4 +1,6 @@
-# Candidatos a comercios (SIN VERIFICAR — no publicar sin confirmar)
+# Candidatos a comercios (SIN VERIFICAR)
+
+> Ya añadidos a las webs por petición del usuario (sin teléfono ni web). Falta confirmar datos con cada negocio.
 
 Encontrados en directorios online (octubre 2026). Falta confirmar con cada negocio:
 que sigue abierto, dirección, teléfono, web y su permiso para aparecer.

@@ -73,7 +73,7 @@ COMERCIOS_UI = {
                empty="Estamos preparando el directorio. Pronto encontrarás aquí los comercios y negocios de {zona}.",
                cta_h="¿Tienes un negocio en {zona}?",
                cta="Escríbenos para aparecer en este directorio: [EMAIL]",
-               addr="Dirección", phone="Teléfono", web="Web", noverify="",
+               disclaimer="Información orientativa recopilada de directorios públicos: confirma horarios y datos con cada negocio antes de ir.", addr="Dirección", phone="Teléfono", web="Web", noverify="",
                cats=dict(food="Comer y beber", stay="Alojamiento", shop="Tiendas y supermercados",
                          services="Servicios", activities="Actividades y excursiones")),
     "en": dict(file_label="Local businesses", title="Local businesses in {zona} | {d}",
@@ -83,7 +83,7 @@ COMERCIOS_UI = {
                empty="We are preparing the directory. Soon you will find the local shops and businesses of {zona} here.",
                cta_h="Do you run a business in {zona}?",
                cta="Get in touch to be listed in this directory: [EMAIL]",
-               addr="Address", phone="Phone", web="Website", noverify="",
+               disclaimer="Indicative information compiled from public directories: please confirm opening hours and details with each business before you go.", addr="Address", phone="Phone", web="Website", noverify="",
                cats=dict(food="Food and drink", stay="Accommodation", shop="Shops and supermarkets",
                          services="Services", activities="Activities and tours")),
     "de": dict(file_label="Lokale Geschäfte", title="Lokale Geschäfte in {zona} | {d}",
@@ -93,7 +93,7 @@ COMERCIOS_UI = {
                empty="Wir bereiten das Verzeichnis vor. Bald findest du hier die lokalen Geschäfte und Betriebe in {zona}.",
                cta_h="Hast du einen Betrieb in {zona}?",
                cta="Schreib uns, um in diesem Verzeichnis zu erscheinen: [E-MAIL]",
-               addr="Adresse", phone="Telefon", web="Website", noverify="",
+               disclaimer="Orientierende Angaben aus öffentlichen Verzeichnissen: Bitte bestätige Öffnungszeiten und Details vor dem Besuch direkt beim Betrieb.", addr="Adresse", phone="Telefon", web="Website", noverify="",
                cats=dict(food="Essen und Trinken", stay="Unterkunft", shop="Läden und Supermärkte",
                          services="Dienstleistungen", activities="Aktivitäten und Touren")),
 }
@@ -130,6 +130,8 @@ def comercios_page(lang, domain, zona, items):
                     rows.append('<p><strong>' + u["web"] + ':</strong> <a href="' + _esc(c["web"]) + '" rel="noopener nofollow">' + _esc(c["web"]) + "</a></p>")
                 out.append('        <div class="card"><h3>' + _esc(c["name"]) + "</h3>" + "".join(rows) + "</div>")
             out.append("      </div>")
+    if items:
+        out.append('      <p class="affiliate">' + u["disclaimer"] + "</p>")
     out.append('      <div class="note"><strong>' + fmt(u["cta_h"]) + "</strong> " + fmt(u["cta"]) + "</div>")
     return dict(title=fmt(u["title"]), description=fmt(u["description"]), h1=fmt(u["h1"]),
                 lead=fmt(u["lead"]), crumb=u["crumb"], content="\n".join(out))
