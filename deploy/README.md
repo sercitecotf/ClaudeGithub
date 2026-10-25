@@ -25,6 +25,37 @@ ls -la /home/imos/public_html     # mira qué hay antes de decidir
 Decide si la web nueva sustituye a la actual. Si no estás seguro, súbela a un
 subdirectorio de prueba o a un dominio de pruebas primero.
 
+## Primero: subir a una carpeta de PRUEBAS (recomendado)
+Así no se toca la web actual. La copia de pruebas lleva `noindex` y un
+`robots.txt` que bloquea a los buscadores. Los enlaces son relativos, así que
+funcionan dentro de una subcarpeta.
+
+1. Empaqueta en modo prueba (en tu equipo):
+   ```bash
+   ./deploy/empaquetar.sh prueba      # genera dist/<web>-prueba.tar.gz
+   ```
+2. Sube cada `dist/<web>-prueba.tar.gz` a `/root/` por SFTP.
+3. Por SSH, crea la carpeta de pruebas y descomprime (cambia `U` y el archivo):
+   ```bash
+   U=imos                              # imos | guiadei | (usuario nuevo)
+   mkdir -p /home/$U/public_html/pruebas
+   tar -xzf /root/imosinformatica-prueba.tar.gz -C /home/$U/public_html/pruebas/
+   chown -R $U:$U /home/$U/public_html/pruebas
+   find /home/$U/public_html/pruebas -type d -exec chmod 755 {} \;
+   find /home/$U/public_html/pruebas -type f -exec chmod 644 {} \;
+   ```
+   (`public_html` no cambia de propietario: solo se toca `pruebas/`.)
+4. Mira el resultado sin cambiar el DNS:
+   ```bash
+   curl -k --resolve imosinformatica.com:443:188.245.197.101 https://imosinformatica.com/pruebas/ | head
+   ```
+   O añade `188.245.197.101 imosinformatica.com` al fichero `hosts` de tu equipo y
+   abre `https://imosinformatica.com/pruebas/` en el navegador (igual para los otros dominios).
+5. Para quitarlo: `rm -rf /home/$U/public_html/pruebas`.
+
+> `sanisidrodeabona.com` necesita primero la cuenta en CWP (paso 2 más abajo).
+> Mientras el DNS siga en HostGator, solo se ve con `--resolve` o `hosts`.
+
 ## 1. Empaquetar (en tu equipo)
 ```bash
 ./deploy/empaquetar.sh      # genera dist/*.tar.gz
