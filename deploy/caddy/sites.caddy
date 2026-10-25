@@ -1,0 +1,40 @@
+# Las tres webs estáticas. HTTPS automático (Let's Encrypt) sin configuración extra.
+# Se añade al Caddyfile del servidor o se importa desde él (ver README).
+
+(sitio_estatico) {
+	encode zstd gzip
+	file_server
+	try_files {path} {path}.html {path}/index.html
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+	@estaticos path *.css *.js *.png *.jpg *.jpeg *.webp *.svg *.ico *.woff2
+	header @estaticos Cache-Control "public, max-age=2592000"
+}
+
+guiadeisora.net {
+	root * /var/www/guiadeisora.net
+	import sitio_estatico
+}
+www.guiadeisora.net {
+	redir https://guiadeisora.net{uri} permanent
+}
+
+imosinformatica.com {
+	root * /var/www/imosinformatica.com
+	import sitio_estatico
+}
+www.imosinformatica.com {
+	redir https://imosinformatica.com{uri} permanent
+}
+
+sanisidrodeabona.com {
+	root * /var/www/sanisidrodeabona.com
+	import sitio_estatico
+}
+www.sanisidrodeabona.com {
+	redir https://sanisidrodeabona.com{uri} permanent
+}
